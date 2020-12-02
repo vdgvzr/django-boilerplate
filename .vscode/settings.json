@@ -8,6 +8,7 @@
   "python.venvPath": "${workspaceFolder}/env/bin/python3",
   "python.linting.pycodestyleArgs": ["--ignore=E501"],
   "files.exclude": {
-    "**/*.pyc": true
+    "**/*.pyc": true,
+    "**/env": true
   }
 }
