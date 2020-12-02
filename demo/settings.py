@@ -8,6 +8,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = []
 
+PROJECT_NAME = env('PROJECT_NAME')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,7 +35,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
-ROOT_URLCONF = 'demo.urls'
+ROOT_URLCONF = f'{PROJECT_NAME}.urls'
 
 TEMPLATES = [
     {
@@ -94,12 +96,12 @@ if DEBUG:
 
     STATIC_LOCATION = 'static'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-    STATICFILES_STORAGE = 'demo.storage_backends.StaticStorage'
+    STATICFILES_STORAGE = f'{PROJECT_NAME}.storage_backends.StaticStorage'
 
     # S3 public media settings
 
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'demo.storage_backends.PublicMediaStorage'
+    DEFAULT_FILE_STORAGE = f'{PROJECT_NAME}.storage_backends.PublicMediaStorage'
 
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
